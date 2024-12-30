@@ -7,9 +7,9 @@ products:
 - azure-functions
 - azure
 - entra-id
-urlFragment: azure-functions-openai-aisearch-dotnet8
+urlFragment: azure-functions-openai-aisearch-python
 languages:
-- csharp
+- python
 - bicep
 - azdeveloper
 ---
@@ -25,7 +25,7 @@ You can learn more about the OpenAI trigger and bindings extension in the [GitHu
 
 ## Prerequisites
 
-* [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) or greater (Visual Studio 2022 recommended)
+* [Python 3.8+](https://www.python.org/) 
 * [Azure Functions Core Tools v4.x](https://learn.microsoft.com/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Cnode%2Cportal%2Cbash)
 * [Azure OpenAI resource](https://learn.microsoft.com/azure/openai/overview)
 * [Azure AI Search resource](https://learn.microsoft.com/en-us/azure/search/)
@@ -38,7 +38,7 @@ You can learn more about the OpenAI trigger and bindings extension in the [GitHu
 
 Once you have your Azure subscription, run the following in a new terminal window to create Azure OpenAI, Azure AI Search and other resources needed: You will be asked if you want to enable a virtual network that will lock down your OpenAI and AI Search services so they are only available from the deployed function app over private endpoints. To skip virtual network integration, select true. If you select networking, your local IP will be added to the OpenAI and AI Search services so you can debug locally.
 ```bash
-azd init --template https://github.com/Azure-Samples/azure-functions-openai-aisearch-dotnet
+azd init --template https://github.com/Azure-Samples/azure-functions-openai-aisearch-python
 ```
 Mac/Linux:
 ```bash
@@ -61,7 +61,7 @@ If you don't run azd provision, you can create an [OpenAI resource](https://port
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
     "AZURE_OPENAI_ENDPOINT": "<paste from above>",
     "CHAT_MODEL_DEPLOYMENT_NAME": "chat",
     "AZURE_AISEARCH_ENDPOINT": "<paste from above>",
@@ -72,7 +72,7 @@ If you don't run azd provision, you can create an [OpenAI resource](https://port
 ```
 
 ### Permissions
-#### Add your account (contoso.microsoft.com) with the following permissions to the Azure OpenAI and AI Search resources when testing locally.
+#### Add your account (your account email, for example: contoso@microsoft.com) with the following permissions to the Azure OpenAI and AI Search resources when testing locally.
 If you used `azd provision` this step is already done - your logged in user and your function's managed idenitty already have permissions granted. 
 * Cognitive Services OpenAI User (OpenAI resource)
 * Azure Search Service Contributor (AI Search resource)
@@ -84,17 +84,8 @@ If you selected virtual network integration, access to Azure OpenAI and Azure AI
 
 ## Run your app using Visual Studio Code
 
-1. Open the folder in a new terminal.
-1. Run the `code .` code command to open the project in Visual Studio Code.
-1. In the command palette (F1), type `Azurite: Start`, which enables debugging without warnings.
-1. Press **Run/Debug (F5)** to run in the debugger. Select **Debug anyway** if prompted about local emulator not running.
-1. Send POST requests to the `ingest` and `ask` endpoints respectively using your HTTP test tool. If you have the [RestClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension installed, you can execute requests directly from the [`test.http`](./app/test.http) project file.
-
-## Run your app using Visual Studio
-
-1. Open the `AISearchSample.sln` solution file in Visual Studio.
-1. Press **Run/F5** to run in the debugger. Make a note of the `localhost` URL endpoints, including the port, which might not be `7071`.
-1. Open the [`test.http`](./app/test.http) project file, update the port on the `localhost` URL (if needed), and then use the built-in HTTP client to call the `ingest` and `ask` endpoints.
+1) Run and Debug `F5` the app or Open terminal inside VS code and type "func start"
+2) Using your favorite REST client, e.g. [RestClient in VS Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client), PostMan, curl, make a post.  `test.http` has been provided to run this quickly.   
 
 
 ## Deploy to Azure
@@ -113,7 +104,7 @@ You're prompted to supply these required deployment parameters:
 | _Azure subscription_ | Subscription in which your resources are created.|
 | _Azure location_ | Azure region in which to create the resource group that contains the new Azure resources. Only regions that currently support the Flex Consumption plan are shown.|
 
-After publish completes successfully, `azd` provides you with the URL endpoints of your new functions, but without the function key values required to access the endpoints. To learn how to obtain these same endpoints along with the required function keys, see [Invoke the function on Azure](https://learn.microsoft.com/azure/azure-functions/create-first-function-azure-developer-cli?pivots=programming-language-dotnet#invoke-the-function-on-azure) in the companion article [Quickstart: Create and deploy functions to Azure Functions using the Azure Developer CLI](https://learn.microsoft.com/azure/azure-functions/create-first-function-azure-developer-cli?pivots=programming-language-dotnet).
+After publish completes successfully, `azd` provides you with the URL endpoints of your new functions, but without the function key values required to access the endpoints. To learn how to obtain these same endpoints along with the required function keys, see [Invoke the function on Azure](https://learn.microsoft.com/azure/azure-functions/create-first-function-azure-developer-cli?pivots=programming-language-python#invoke-the-function-on-azure) in the companion article [Quickstart: Create and deploy functions to Azure Functions using the Azure Developer CLI](https://learn.microsoft.com/azure/azure-functions/create-first-function-azure-developer-cli?pivots=programming-language-python).
 
 ## Redeploy your code
 

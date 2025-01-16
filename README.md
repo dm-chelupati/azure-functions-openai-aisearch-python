@@ -40,7 +40,8 @@ Once you have your Azure subscription, run the following in a new terminal windo
 ```bash
 azd init --template https://github.com/Azure-Samples/azure-functions-openai-aisearch-python
 ```
-Make sure to run this before calling azd to provision resources so azd can run scripts required to setup permissions 
+Make sure to run this before calling azd to provision resources so azd can run scripts required to setup permissions
+
 Mac/Linux:
 ```bash
 chmod +x ./infra/scripts/*.sh 

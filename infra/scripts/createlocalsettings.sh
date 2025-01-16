@@ -25,7 +25,7 @@ if [ ! -f "./app/local.settings.json" ]; then
     "IsEncrypted": "false",
     "Values": {
         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+        "FUNCTIONS_WORKER_RUNTIME": "python",
         "AZURE_OPENAI_ENDPOINT": "$OpenAIEndPoint",
         "CHAT_MODEL_DEPLOYMENT_NAME": "chat",
         "AZURE_AISEARCH_ENDPOINT": "$AISearchEndPoint",

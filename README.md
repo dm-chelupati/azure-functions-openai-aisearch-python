@@ -84,7 +84,7 @@ If you selected virtual network integration, access to Azure OpenAI and Azure AI
 
 ## Run your app using Visual Studio Code
 
-1) Run and Debug `F5` the app or Open terminal inside VS code and type "func start"
+1)Run and Debug `F5` the app or open a new terminal window in the `./app` folder and enter `func start`
 2) Using your favorite REST client, e.g. [RestClient in VS Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client), PostMan, curl, make a post.  `test.http` has been provided to run this quickly.   
 
 

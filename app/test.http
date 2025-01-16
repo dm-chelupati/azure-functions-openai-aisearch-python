@@ -10,7 +10,7 @@
 @host=http://localhost:7071
 
 ### Import data in AI Search
-POST {{host}}/api/ingest
+POST {{host}}/api/IngestFile
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ### Ask question of imported data
-POST {{host}}/api/ask
+POST {{host}}/api/PromptFile
 Content-Type: application/json
 
 {

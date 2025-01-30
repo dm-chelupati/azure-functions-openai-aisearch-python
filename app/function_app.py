@@ -6,7 +6,7 @@ import openai
 import os
 import json
 
-app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
 @app.function_name("IngestFile")
 @app.route(methods=["POST"])

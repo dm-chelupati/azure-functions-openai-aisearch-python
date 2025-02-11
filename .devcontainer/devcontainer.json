@@ -1,4 +1,4 @@
-{{
+{
     "name": "Azure Search OpenAI using Azure functions and Python",
     "image": "mcr.microsoft.com/devcontainers/python:3.11",
     "features": {

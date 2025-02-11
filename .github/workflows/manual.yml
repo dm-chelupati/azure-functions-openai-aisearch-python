@@ -1,0 +1,16 @@
+            - name: Gallery Standard Validation
+  uses: microsoft/template-validation-action@v0.3.5
+  with:
+    # The path of target template to validate
+    workingDirectory: # default is .
+    # Comma-separated list of paths to validate
+    validatePaths: # optional
+    # Comma-separated list of topics to check
+    topics: # optional
+    # Run azd up and azd down for validation
+    validateAzd: # default is true
+    # Use dev container for validation
+    useDevContainer: # default is true
+    # Run security action validation
+    securityAction: # default is PSRule
+          
